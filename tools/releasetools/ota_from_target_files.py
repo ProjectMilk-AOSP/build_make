@@ -251,6 +251,10 @@ A/B OTA specific options
 
   --max_threads
       Specify max number of threads allowed when generating A/B OTA
+
+  --backup <boolean>
+      Enable or disable the execution of backuptool.sh.
+      Disabled by default.
 """
 
 from __future__ import print_function
@@ -325,7 +329,7 @@ OPTIONS.enable_lz4diff = False
 OPTIONS.vabc_compression_param = None
 OPTIONS.security_patch_level = None
 OPTIONS.max_threads = None
-
+OPTIONS.backuptool = False
 
 POSTINSTALL_CONFIG = 'META/postinstall_config.txt'
 DYNAMIC_PARTITION_INFO = 'META/dynamic_partitions_info.txt'
@@ -1197,6 +1201,8 @@ def main(argv):
       OPTIONS.enable_lz4diff = a.lower() != "false"
     elif o == "--vabc_compression_param":
       OPTIONS.vabc_compression_param = a.lower()
+    elif o == "--backup":
+      OPTIONS.backuptool = True
     elif o == "--security_patch_level":
       OPTIONS.security_patch_level = a
     elif o in ("--max_threads"):
@@ -1257,6 +1263,7 @@ def main(argv):
                                  "vabc_compression_param=",
                                  "security_patch_level=",
                                  "max_threads=",
+                                 "backup=",
                              ], extra_option_handler=option_handler)
   common.InitLogging()
 
