@@ -204,12 +204,12 @@ function check_product()
         echo "Couldn't locate the top of the tree.  Try setting TOP." >&2
         return
     fi
-    if (echo -n $1 | grep -q -e "^blaze_") ; then
-        BLAZE_BUILD=$(echo -n $1 | sed -e 's/^blaze_//g')
+    if (echo -n $1 | grep -q -e "^milk_") ; then
+        MILK_BUILD=$(echo -n $1 | sed -e 's/^milk_//g')
     else
-        BLAZE_BUILD=
+        MILK_BUILD=
     fi
-    export BLAZE_BUILD
+    export MILK_BUILD
 
         TARGET_PRODUCT=$1 \
         TARGET_BUILD_VARIANT= \
@@ -832,13 +832,13 @@ function lunch()
         # if we can't find a product, try to grab it off the PixelExperience GitHub
         T=$(gettop)
         cd $T > /dev/null
-        vendor/blaze/build/tools/roomservice.py $product
+        vendor/milk/build/tools/roomservice.py $product
         cd - > /dev/null
         check_product $product
     else
         T=$(gettop)
         cd $T > /dev/null
-        vendor/blaze/build/tools/roomservice.py $product true
+        vendor/milk/build/tools/roomservice.py $product true
         cd - > /dev/null
     fi
 
@@ -2135,5 +2135,5 @@ export ANDROID_BUILD_TOP=$(gettop)
 
 function repopick() {
     T=$(gettop)
-    $T/vendor/blaze/build/tools/repopick.py $@
+    $T/vendor/milk/build/tools/repopick.py $@
 }

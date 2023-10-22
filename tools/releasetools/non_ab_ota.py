@@ -203,22 +203,22 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   # Dump fingerprints
   script.Print("Target: {}".format(target_info.fingerprint))
 
-  date = target_info.GetBuildProp("ro.blaze.build.date")
-  version = target_info.GetBuildProp("ro.blaze.version")
+  date = target_info.GetBuildProp("ro.milk.build.date")
+  version = target_info.GetBuildProp("ro.milk.version")
 
   if target_info.GetBuildProp("ro.product.model") is not None:
     model = target_info.GetBuildProp("ro.product.model")
     script.Print("***********************************************");
-    script.Print("           PROJECTBLAZE for %s"%(model));
-    script.Print("               BY: ADITYA SINGH                ");
+    script.Print("           PROJECTMILK for %s"%(model));
+    script.Print("               BY: Febri Cahyaa                ");
     script.Print("   VERSION: %s"%(version));
     script.Print("   COMPILED ON: %s"%(date));
     script.Print("***********************************************");
   else:
     name = target_info.GetBuildProp("ro.product.name")
     script.Print("***********************************************");
-    script.Print("           PROJECTBLAZE for %s"%(name));
-    script.Print("               BY: ADITYA SINGH                ");
+    script.Print("           PROJECTMILK for %s"%(name));
+    script.Print("               BY: Febri Cahyaa                ");
     script.Print("   VERSION: %s"%(version));
     script.Print("   COMPILED ON: %s"%(date));
     script.Print("***********************************************");
